@@ -1,0 +1,50 @@
+user: fqxxphrhid
+password: G34R68055WG7F6BN$
+
+jdbc:mysql://proyecto-server.mysql.database.azure.com:3306/proyectosoa?serverTimezone=UTC&sslmode=required&user=fqxxphrhid&password=G34R68055WG7F6BN%24
+
+
+{
+  "appId": "f74d3898-42a5-438d-a9e8-ed28849af7a5",
+  "displayName": "http://proyectosoa-1688137876765",
+  "password": "tt18Q~VoDewGmtjGDfnIEGersgDXp4NUAAYIycAL",
+  "tenant": "a988ccd4-00ed-4bf3-a4d1-b5661f44abdf"
+}
+
+<server>
+  <id>azure-auth</id>
+  <configuration>
+     <client>f74d3898-42a5-438d-a9e8-ed28849af7a5</client>
+     <tenant>a988ccd4-00ed-4bf3-a4d1-b5661f44abdf</tenant>
+     <key>tt18Q~VoDewGmtjGDfnIEGersgDXp4NUAAYIycAL</key>
+     <environment>AZURE</environment>
+   </configuration>
+</server>
+
+
+--------------------------------------------------------------------------
+
+//Local Server
+private static final String SERVICE_URL = "http://localhost:8088/ProyectoSOA/restful/primary";
+    
+//Cloud server
+private static final String SERVICE_URL = String.format("http://proyecto-soa.eastus.cloudapp.azure.com:8080/ProyectoSOA/restful/primary");
+
+--------------------------------------------------------------------------
+
+//--- Local Server ---
+private static final String SERVICE_URL = "http://localhost:8088/ProyectoSOA/restful/servlet";
+    
+//--- Cloud Server ---    
+private static final String SERVICE_URL = String.format("http://proyecto-soa.eastus.cloudapp.azure.com:8080/ProyectoSOA/restful/servlet");
+
+---------------------------------------------------------------------------
+
+//Cloud server
+String url= String.format("jdbc:" + dbEngine + "://" + 
+                    hostName + ":3306/" + dbName + "?useSSL=true");
+            
+//Local Server
+url = "jdbc:mysql://localhost:3306/proyectosoa";
+dbUser = "root"; dbPassword = "";
+    

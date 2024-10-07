@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+    <script>
+        //variables de tipo string
+        cadena="hola";
+        console.log(cadena);
+        //alter(cadena) 
+        //numericas
+        var numeros=12;
+        console.log(numeros);
+        //boleanos.
+        var bolean=(false);
+        console.log(bolean)
+        //arrays
+        var vector =["lunes","Martes"];
+        console.log(vector [0]);
+        //objeto clave : valor
+        //La clave es el identificador y el valor del identificador
+        var objetoPersona={"celula":"1850860477",nombre:"Angie Caiza"}
+        console.log(objetoPersona.celula)
+        console.log(objetoPersona.nombre)
+        //VARIABLES JSON
+        var JSON1 ={
+                    "cedula": "185860477",
+                    "nombre": "Angie",
+                    "apellido": "Caiza",
+                    "instruccion": [{"primaria":"LA SALLE","secundaria":"BOLIVAR"}],
+                    "instruccion1": {"primaria":"LA SALLE","secundaria":"BOLIVAR"},
+                    "edad": 40
+                }
+                console.log(JSON1.instruccion[0].primaria)
+                console.log(JSON1.instruccion1.secundaria)//SIN VECTOR 
+                console.log(JSON1)
+
+                //JSON.Parse > convertir un string a JSON a un objeto de javascript 
+                var cadena2='{"Nombre":"Angie","apellido1":"Caiza"}';
+                var Mijson=JSON.parse(cadena2);
+                console.log(Mijson);
+                console.log(Mijson.apellido1);
+
+                //JSON.strinfy: convertir un objeto de JAVAScrip a Json String  
+                var cadena3={"celula":"1850860477",nombre:"Angie Caiza"}
+                console.log(cadena3)
+                var Mitexto= JSON.stringify(cadena3)
+                console.log(Mitexto)
+                //convertir el array a texto 
+                var vector1 =["lunes","Martes"];
+                console.log(vector1)
+                var Mitexto1=JSON.stringify(vector1)
+                console.log(Mitexto1)
+                console.log(typeof(Mitexto1))//que tipo  de dato es el que estoy recibiendo
+                
+
+
+    </script>
+</body>
+</html>

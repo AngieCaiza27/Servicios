@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>scr="https://code.jquery.com/jquery-3.6.0.min.js"</script>
+</head>
+<body>
+    <script>
+        // var xhttp = new XMLHttpRequest();//instancia de la variable, para saber que petion se esta mandando al servidor 
+
+        // xhttp.open("GET","miJson.json"); //necesita dos argumentos --- el estado que se va a mandar y a donde se va realizar
+        // xhttp.send(); //se envia el estado
+        
+        // xhttp.onreadystatechange=function()//cuando el atributo readyState cambia // crea una funcion para devolver el estado  
+        // {
+        //     if(xhttp.readyState==4 && xhttp.status==200)
+        //     {
+        //         console.log("El texto es: "+ xhttp.responseText);//Me lee el texto que estoy enviado para saber si esta ejecutando
+        //         console.log("el valor de la propiedad Status es: "+xhttp.status);//para ver los estados 200,400 etc...
+        //         console.log("el valor de la propiedad ReadyState es: "+ xhttp.readyState); //para ver los estaos 0,4,2 etc..
+        //         //xhttp.response y xhttp.response.text imprimen lo mismo 
+        //         var objecto= JSON.parse(xhttp.response);//se convierto a objeto de Java Script
+        //         console.log(objecto);
+        //         console.log(objecto.cedula)
+        //     }
+        // }
+
+        // fetch("miJson.json")//se puede leer un JSON como un objeto directamnete de java script  
+        //     .then(response=> response.json())
+        //     .then(data=>{
+        //         console.log(data)
+        //     })
+        
+        //AJAX - FUNCIONA CON JQUERY
+        // $.ajax({ //Coger de manera Asoncronica la peticion 
+        //     url:"miJson.json",//que se va leer
+        //     type:"GET",//peticion que se envia
+        //     dateType:"json",//tipo de formato 
+        //     success:function(jsonData)
+        //     {
+        //         console.log(jsonData);
+        //     },
+        //     error:function(error)
+        //     {
+        //         console.log("error al leer el JSON",error);
+        //     }
+        //     //tiene dos cosas cuando se jecuta o no 
+
+        // });    
+
+        //await
+        async function cargar() 
+        {
+            try {
+                let response= await fetch("miJson.json"); //es para constantes
+                var data = await response.json();
+                console.log(data);
+            } catch (error) {
+                console.log("error al leer el JSON",error
+
+                )
+            }    
+        }
+        cargar();
+
+    </script>
+</body>
+</html>

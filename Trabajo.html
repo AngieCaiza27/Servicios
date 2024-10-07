@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Películas</h1>
+    <script>
+        function cargarPeliculas() {
+            return fetch('movies.json')
+                .then(response => response.json());
+        }
+
+        // 1. Listar título, año, duración y número de actores
+        cargarPeliculas()
+            .then(movies => {
+                movies.forEach(movie => {
+                    console.log(`Título: ${movie.title}, Año: ${movie.year}, Duración: ${movie.duration}`);
+                    console.log(`Número de actores: ${movie.actors.length}`);
+                    console.log("--------------------------------------------------------------------------");
+                });
+            })
+            .catch(error => console.error('Error al cargar el JSON:', error));
+
+        // 2. Filtrar películas por palabras clave en la sinopsis
+        cargarPeliculas()
+            .then(movies => {
+                const palabra1 = 'prisoner';
+                const palabra2 = 'banker';
+                const filteredMovies = movies.filter(movie => 
+                    movie.storyline.includes(palabra1) && movie.storyline.includes(palabra2)
+                );
+
+                if (filteredMovies.length > 0) {
+                    filteredMovies.forEach(movie => {
+                        console.log(`Título de las películas con las palabras filtradas: ${movie.title}`);
+                        console.log("--------------------------------------------------------------------------");
+                    });
+                } else {
+                    console.log('No se encontraron películas que coincidan con los criterios.');
+                }
+            })
+            .catch(error => console.error('Error al cargar el JSON:', error));
+
+        // 3. Filtrar películas por actor
+        cargarPeliculas()
+            .then(movies => {
+                const actorBuscado = 'Morgan Freeman';
+                const peliculasDelActor = movies.filter(movie => 
+                    movie.actors.includes(actorBuscado)
+                );
+
+                if (peliculasDelActor.length > 0) {
+                    peliculasDelActor.forEach(movie => {
+                        console.log(`Título de la película con el actor Morgan Freeman: ${movie.title}, Año: ${movie.year}`);
+                        console.log("--------------------------------------------------------------------------");
+                    });
+                } else {
+                    console.log(`No se encontraron películas con el actor ${actorBuscado}.`);
+                }
+            })
+            .catch(error => console.error('Error al cargar el JSON:', error));
+
+            cargarPeliculas()
+            .then(movies => {
+                const fechaInicio = new Date('1990-01-01');
+                const fechaFin = new Date('2000-12-31');
+                const peliculasFiltradas = movies.filter(movie => {
+                    const releaseDate = new Date(movie.releaseDate);
+                    return releaseDate >= fechaInicio && releaseDate <= fechaFin;
+                });
+
+                const peliculasConMedia = peliculasFiltradas.map(movie => {
+                    const totalRatings = movie.ratings.reduce((a, b) => a + b, 0);
+                    const media = totalRatings / movie.ratings.length;
+                    return { ...movie, media }; 
+                });
+
+                const topPeliculas = peliculasConMedia.sort((a, b) => b.media - a.media).slice(0, 3);
+                
+                topPeliculas.forEach(movie => {
+                    console.log(`Título: ${movie.title}, URL del Póster: ${movie.posterurl}`);
+                });
+            })
+            .catch(error => console.error('Error al cargar el JSON:', error));
+    </script>
+</body>
+</html>
